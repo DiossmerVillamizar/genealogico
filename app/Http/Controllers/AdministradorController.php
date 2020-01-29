@@ -14,8 +14,13 @@ class AdministradorController extends Controller
         //return " Si has llegado hasta aqui, eres administrador";
         //$request->session()->put(['Diossmer'=>'Administrador']);
         //session(['Maria'=>'Estudiante']);
-        $request->session()->forget('Diossmer');$request->session()->flush();
-        return $request->session()->all();
+        //$request->session()->forget('Diossmer');
+        //$request->session()->flush();
+        //$request->session()->flash('ESPACIO 2', 'ESO 2');
+        //$request->session()->reflash();
+        //$request->session()->keep(['Alejandro', 'Administrador']);
 
+        $request->session()->regenerate();
+        return $request->session()->all();
     }
 }
