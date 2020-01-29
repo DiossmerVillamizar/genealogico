@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class EsAdminMiddleware
 {
@@ -15,6 +16,12 @@ class EsAdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+    $user=Auth::user();
+    if(!$user->esAdmin()){
+        return redirect('/');
+    }else{
+        echo "Eres Administrador";
+    }
         return $next($request);
     }
 }

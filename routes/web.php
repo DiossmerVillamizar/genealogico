@@ -14,12 +14,12 @@
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    $user=Auth::user();
+    /*$user=Auth::user();
     if($user->esAdmin()){
         echo "Eres Administrador";
     }else{
         echo "Eres Usuario";
-    }
+    }*/
     return view('welcome');
     /*if(Auth::check()){
         return view('welcome');
@@ -31,3 +31,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin','AdministradorController@index');
