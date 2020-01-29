@@ -14,12 +14,18 @@
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    //return view('welcome');
-    if(Auth::check()){
+    $user=Auth::user();
+    if($user->esAdmin()){
+        echo "Eres Administrador";
+    }else{
+        echo "Eres Usuario";
+    }
+    return view('welcome');
+    /*if(Auth::check()){
         return view('welcome');
     }else{
         return view('welcome');
-    }
+    }*/
 });
 
 Auth::routes();
