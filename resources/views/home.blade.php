@@ -15,7 +15,8 @@
                     @endif
 
                     <h1>Welcome</h1>
-
+                    {!! link_to("objeto", "Objeto", ["class"=>"btn btn-primary"]) !!}
+                    {!! link_to("serial", "Serial", ["class"=>"btn btn-success"]) !!}
                 </div>
             </div>
         </div>

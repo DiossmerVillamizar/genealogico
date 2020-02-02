@@ -18,9 +18,7 @@ class CreateObjetosTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('modelo');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps('practica');
+            $table->timestamps('');
         });
     }
 

@@ -29,11 +29,11 @@ Route::group(['prefix' => 'objeto'], function () {
     Route::delete('{id?}', 'ObjetoController@destroy')->name('objeto.destroy');
 });
 Route::group(['prefix' => 'serial'], function () {
-    Route::get('/', 'SerialController@index')->name('objeto.index');
-    Route::post('/', 'SerialController@store')->name('objeto.store');
-    Route::get('create', 'SerialController@create')->name('objeto.create');
-    Route::get('{id?}/edit', 'SerialController@edit')->name('objeto.edit');
-    Route::put('{id?}', 'SerialController@update')->name('objeto.update');
-    Route::get('{id?}', 'SerialController@show')->name('objeto.show');
-    Route::delete('{id?}', 'SerialController@destroy')->name('objeto.destroy');
+    Route::get('/', 'SerialController@index')->name('serial.index');
+    Route::post('/', 'SerialController@store')->name('serial.store');
+    Route::get('create', 'SerialController@create')->name('serial.create');
+    Route::get('{id?}/edit', 'SerialController@edit')->name('serial.edit');
+    Route::put('{id?}', 'SerialController@update')->name('serial.update');
+    Route::get('{id?}', 'SerialController@show')->name('serial.show');
+    Route::delete('{id?}', 'SerialController@destroy')->name('serial.destroy');
 });

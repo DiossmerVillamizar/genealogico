@@ -13,8 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <p><b>Relación De One To One</b></p>
+                    <p> <b>serial:</b> {{$serial->find(11)->serial}}  <b>Modelo:</b> {{--$serial->objetos->modelo FAIL--}} </p>
+                    <p>Este equipo esta en perfecta condiciones para el uso diario.</p>
+                    <b>{!! link_to_route("serial.index", "Inicio") !!}</b>
                 </div>
             </div>
         </div>

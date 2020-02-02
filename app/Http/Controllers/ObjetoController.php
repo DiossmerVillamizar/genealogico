@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Objeto;
+use App\Serial;
+use App\User;
 use Illuminate\Http\Request;
 
 class ObjetoController extends Controller
@@ -15,6 +17,9 @@ class ObjetoController extends Controller
     public function index()
     {
         //
+        $usuario=User::all();
+        $objeto = Objeto::all();
+        return view('objetos.home',compact('usuario','objeto'));
     }
 
     /**
@@ -25,6 +30,7 @@ class ObjetoController extends Controller
     public function create()
     {
         //
+        return view('objetos.create');
     }
 
     /**
@@ -36,6 +42,12 @@ class ObjetoController extends Controller
     public function store(Request $request)
     {
         //
+        $objeto = new Objeto();
+        $objeto->nombre = $request->nombre;
+        $objeto->apellido = $request->apellido;
+        $objeto->modelo = $request->modelo;
+        $objeto->save();
+        return redirect('objeto');
     }
 
     /**
@@ -44,9 +56,12 @@ class ObjetoController extends Controller
      * @param  \App\Objeto  $objeto
      * @return \Illuminate\Http\Response
      */
-    public function show(Objeto $objeto)
+    public function show($objeto)
     {
         //
+
+        $objeto=Objeto::find($objeto);
+        return view('objetos.show',compact('objeto'));
     }
 
     /**
@@ -55,9 +70,11 @@ class ObjetoController extends Controller
      * @param  \App\Objeto  $objeto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Objeto $objeto)
+    public function edit($objeto)
     {
         //
+        $objeto = Objeto::find($objeto);
+        return view('objetos.edit',compact('objeto'));
     }
 
     /**
@@ -67,9 +84,15 @@ class ObjetoController extends Controller
      * @param  \App\Objeto  $objeto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Objeto $objeto)
+    public function update(Request $request, $objeto)
     {
         //
+        $objeto=Objeto::findOrFail($objeto);
+        $objeto->nombre = $request->nombre;
+        $objeto->apellido = $request->apellido;
+        $objeto->modelo = $request->modelo;
+        $objeto->save();
+        return redirect('objeto');
     }
 
     /**
@@ -78,8 +101,10 @@ class ObjetoController extends Controller
      * @param  \App\Objeto  $objeto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Objeto $objeto)
+    public function destroy($objeto)
     {
         //
+        Objeto::destroy($objeto);
+        return redirect('objeto');
     }
 }

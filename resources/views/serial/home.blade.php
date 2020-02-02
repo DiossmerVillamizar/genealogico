@@ -14,7 +14,30 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <table border="1">
+                    <figcaption>Nuevo {!! link_to_route("serial.create", "Create", null, ["class"=>"btn btn-warning"]) !!}</figcaption>
+                    <caption>Serial de tabla {!! link_to_route("home", "home") !!}</caption>
+                    <thead>
+                        <th>Serial</th>
+                        <th>Modelo</th>
+                        <th>Acción</th>
+                    </thead>
+                    <tbody>
+                    @foreach ($serial as $serials)
+                        <tr>
+                        <td>{{$serials->serial}}</td>
+                        <td>{{$serials->objeto_id}}</td>
+                        <td>
+                            {!! Form::open(["route"=>["serial.destroy",$serials->id],"method"=>"delete"]) !!}
+                            {!! link_to_route("serial.edit", "Edit", $serials->id, ["class"=>"btn btn-danger"]) !!}
+                            {!! link_to_route("serial.show", "Mostrar", $serials->id, ["class"=>"btn btn-primary"]) !!}
+                            {!! Form::submit("Eliminar", ["class"=>"btn btn-success"]) !!}
+                            {!! Form::close() !!}
+                        </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                    </table>
                 </div>
             </div>
         </div>

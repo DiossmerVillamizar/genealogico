@@ -14,17 +14,17 @@
                         </div>
                     @endif
 
-                    {!! Form::open(["route"=>["objeto.update",$objeto->id],"method"=>"put", "autocomplete"=>"off", "enctype"=>"multipart/form-data"]) !!}
+                    {!! Form::open(["route"=>["objeto.store"],"method"=>"post", "autocomplete"=>"off", "enctype"=>"multipart/form-data"]) !!}
                     {!! Form::token() !!}
                     {!! Form::label("nombre", "Nombre") !!}
-                    {!! Form::text("nombre", $objeto->nombre, ["class"=>"form-control"]) !!}
+                    {!! Form::text("nombre", null, ["class"=>"form-control"]) !!}
                     {!! Form::label("apellido", "Apellido") !!}
-                    {!! Form::text("apellido", $objeto->apellido, ["class"=>"form-control"]) !!}
+                    {!! Form::text("apellido", null, ["class"=>"form-control"]) !!}
                     {!! Form::label("modelo", "Modelo") !!}
-                    {!! Form::text("modelo", $objeto->modelo, ["class"=>"form-control"]) !!} <br>
+                    {!! Form::text("modelo", null, ["class"=>"form-control"]) !!} <br>
                     {{-- {!! Form::label("user_id", "Dueño") !!}
                     {!! Form::select('user_id', $usuario->pluck('name'), null,['class' => 'form-control']) !!} <br> --}}
-                    {!! Form::submit("Actualizar", ["Class"=>"btn btn-secundary"]) !!}
+                    {!! Form::submit("Enviar", ["Class"=>"btn btn-secundary"]) !!}
                     {!! Form::close() !!}
                 </div>
             </div>

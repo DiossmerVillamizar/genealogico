@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <p><b>Relación De One To One</b></p>
+                    <p> <b>nombre:</b> {{$objeto->nombre}} <b>apellido:</b> {{$objeto->apellido}}</p>
+                    <p>Este equipo esta en perfecta condiciones para el uso diario, el modelo <br>
+                    presente: <b>{{$objeto->modelo}}</b> Tiene como serial: {{$objeto->serials->serial}}.</p>
+                    <b>{!! link_to_route("objeto.index", "Inicio") !!}</b>
                 </div>
             </div>
         </div>
