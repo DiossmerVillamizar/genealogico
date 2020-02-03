@@ -1,0 +1,3 @@
+@section('script-foot')
+
+@show
