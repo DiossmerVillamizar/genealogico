@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+}
+body{
+    background-color: black;
+    color: white;
+}
+.header{
+    background-color: royalblue;
+    height: 50vh;
+}
+.container{
+    margin: 50px 100px;
+    color: red;
+    text-align: center;
+}
+.cards{
+    margin: 100px 200px;
+    border: double;
+    box-shadow: 6px 6px 20px orangered;
+}
+.card-headers{
+    margin: 20px auto;
+    text-align: center;
+    font-weight: 600;
+}
+.card-bodys table{
+    margin: 20px auto;
+    color: greenyellow;
+}
+.card-footers{
+    text-align: center;
+}
+.footer{
+    background-color: royalblue;
+    height: 50vh;
+}

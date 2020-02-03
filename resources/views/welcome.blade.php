@@ -83,15 +83,11 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    {!! link_to_route("lapiz.index", "Lapiz") !!}
+                    {!! link_to_route("papel.index", "Papel") !!}
+                    <a href="https://laravel.com/docs" target="_blank">Docs</a>
+                    <a href="https://github.com/laravel/laravel" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>
