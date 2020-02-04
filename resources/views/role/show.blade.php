@@ -28,4 +28,6 @@
     @empty
     {{$usuario}}
     @endforelse
+    <br>
+    {!! link_to("role", "Regresar", ['class'=>'btn btn-primary']) !!}
 @endsection

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Role_User;
 use App\User;
 use App\Role;
+use App\RoleUser;
 use Illuminate\Http\Request;
 
 class RoleUserController extends Controller
@@ -17,7 +17,8 @@ class RoleUserController extends Controller
     public function index()
     {
         //
-        return view('role_user.home');
+        $roleuser=RoleUser::ALL();
+        return view('role_user.home',compact('roleuser'));
     }
 
     /**
@@ -29,7 +30,7 @@ class RoleUserController extends Controller
     {
         //
         $usuario=User::pluck('name','id')->all();
-        $role=Role::pluck('name','id')->all();
+        $role=Role::pluck('cargo','id')->all();
         return view('role_user.create',compact('usuario','role'));
     }
 
@@ -42,55 +43,75 @@ class RoleUserController extends Controller
     public function store(Request $request)
     {
         //
-        return redirect('roleuser');
+        $roleuser = new RoleUser();
+        $roleuser->user_id = $request->user_id;
+        $roleuser->role_id = $request->role_id;
+        if($roleuser->save()){
+            return redirect('roleuser')->with('roleuser','Exito al crear.');
+        }else{
+            back()->with('roleuser','no se pudo Crear');
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Role_User  $role_User
+     * @param  \App\RoleUser  $roleuser
      * @return \Illuminate\Http\Response
      */
-    public function show(Role_User $role_User)
+    public function show($roleuser)
     {
         //
-        return view('',compact(''));
+        $roleuser = RoleUser::find($roleuser);
+        $usuario=User::find($roleuser);
+        $role=Role::find($roleuser);
+        return view('role_user.show',compact('role','usuario','roleuser'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Role_User  $role_User
+     * @param  \App\RoleUser  $roleuser
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role_User $role_User)
+    public function edit($roleuser)
     {
         //
-        return view('',compact(''));
+        $roleuser = RoleUser::find($roleuser);
+        $usuario=User::pluck('name','id')->all();
+        $role=Role::pluck('cargo','id')->all();
+        return view('role_user.edit',compact('role','usuario','roleuser'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Role_User  $role_User
+     * @param  \App\RoleUser  $roleuser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role_User $role_User)
+    public function update(Request $request, $roleuser)
     {
         //
-        return redirect('roleuser');
+        $roleuser = RoleUser::findOrFail($roleuser);
+        $roleuser->user_id = $request->user_id;
+        $roleuser->role_id = $request->role_id;
+        if($roleuser->save()){
+            return redirect('roleuser')->with('roleuser','Actualizacion completada!!!');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Role_User  $role_User
+     * @param  \App\RoleUser  $roleuser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role_User $role_User)
+    public function destroy($roleuser)
     {
         //
+        $delete = RoleUser::find($roleuser);
+        $delete->delete();
         return redirect('roleuser');
     }
 }

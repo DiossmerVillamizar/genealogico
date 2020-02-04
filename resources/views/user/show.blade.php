@@ -26,4 +26,6 @@
 @foreach ($usuario->roles as $role)
     {{$role->cargo}}
 @endforeach
+<br>
+{!! link_to("user", "Regresar", ['class'=>'btn btn-primary']) !!}
 @endsection

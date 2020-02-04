@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','Role')
+@section('title','roleuser')
 @section('css')
 
 @parent
@@ -22,22 +22,39 @@ MANY TO MANY
 
 @endsection
 @section('content')
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@elseif(session('roleuser'))
+    <div class="alert alert-info" role="alert">
+        <li>{{session('roleuser')}}</li>
+    </div>
+@endif
+
 <table class="table table-hover">
-    <figcaption class="bold center">Role {!! link_to_route("role.create", "Nuevo", null,["class"=>"btn btn-primary"]) !!}</figcaption>
+    <figcaption class="bold center">Role_User {!! link_to_route("roleuser.create", "Nuevo", null,["class"=>"btn btn-primary"]) !!}</figcaption>
     <thead>
         <tr valign="middle" align="center">
             <th>Cargo</th>
+            <th>Roles</th>
             <th>Acción</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($role as $roles)
+        @foreach ($roleuser as $roleusers)
         <tr valign="middle" align="center">
-            <td>{{$roles->cargo}}</td>
+            <td>{{$roleusers->user_id}}</td>
+            <td>{{$roleusers->role_id}}</td>
             <td>
-                {!! Form::open(["route"=>["role.destroy",$roles->id],"method"=>"delete", "autocomplete"=>"off", "enctype"=>"multipart/form-data"]) !!}
-                {!! link_to_route("role.edit", "Editar", $roles->id, ["class"=>"btn btn-success"]) !!}
-                {!! link_to_route("role.show", "Mostrar", $roles->id, ["class"=>"btn btn-warning"]) !!}
+                {!! Form::open(["route"=>["roleuser.destroy",$roleusers->id],"method"=>"delete", "autocomplete"=>"off", "enctype"=>"multipart/form-data"]) !!}
+                {!! link_to_route("roleuser.edit", "Editar", $roleusers->id, ["class"=>"btn btn-success"]) !!}
+                {!! link_to_route("roleuser.show", "Mostrar", $roleusers->id, ["class"=>"btn btn-warning"]) !!}
                 {!! Form::submit("Eliminar", ["class"=>"btn btn-danger"]) !!}
                 {!! Form::close() !!}
             </td>
