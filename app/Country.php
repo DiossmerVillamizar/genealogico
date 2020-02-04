@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Country extends Model
 {
     //
     public function posts()
     {
-        return $this->belongsToMany('App\Post', 'App\User');
+        return $this->hasManyThrough('App\Post', 'App\User');
     }
 }

@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('hasManyThrough/{id}',function($id){
+    $post=\App\Post::find($id);
+    $user=\App\User::find($id);
+    $contry=\App\Country::find($id);
+    dd($post->title,$user->name,$contry->name);
+});
