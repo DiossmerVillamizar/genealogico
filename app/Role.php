@@ -15,6 +15,6 @@ class Role extends Model
     {
         //intermedio
         //return $this->belongsToMany('App\User')->using('App\RoleUser');
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withTimestamps();
     }
 }

@@ -22,8 +22,8 @@
 
 @endsection
 @section('content')
-{{dd($usuario->roles)}}
+
 @foreach ($usuario->roles as $role)
-    {{$role}}
+    {{$role->cargo}}
 @endforeach
 @endsection

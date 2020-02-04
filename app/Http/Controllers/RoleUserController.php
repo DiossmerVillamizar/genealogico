@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Role_User;
+use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 class RoleUserController extends Controller
@@ -15,7 +17,7 @@ class RoleUserController extends Controller
     public function index()
     {
         //
-        return view('',compact(''));
+        return view('role_user.home');
     }
 
     /**
@@ -26,7 +28,9 @@ class RoleUserController extends Controller
     public function create()
     {
         //
-        return view('',compact(''));
+        $usuario=User::pluck('name','id')->all();
+        $role=Role::pluck('name','id')->all();
+        return view('role_user.create',compact('usuario','role'));
     }
 
     /**

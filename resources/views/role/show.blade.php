@@ -23,4 +23,9 @@
 @endsection
 @section('content')
 
+    @forelse ($role as $usuario)
+    <em>ERROR DE RELACION NO ES LA PRINCIPAL </em>
+    @empty
+    {{$usuario}}
+    @endforelse
 @endsection

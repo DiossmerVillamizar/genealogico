@@ -39,9 +39,10 @@
 
     {!! Form::open(["route"=>["role.store"],"method"=>"post", "autocomplete"=>"off", "enctype"=>"multipart/form-data"]) !!}
     {!! Form::token() !!}
-    {!! Form::label("cargo", "Cargo", ["class"=>"label label-primary"]) !!}
-    {!! Form::select("cargo", ["administrador"=>"Administrador","usuario"=>"Usuario","soporte"=>"Soporte"],/*"administrador"*/null, ["placeholder"=>"seleciona un cargo","class"=>"form-control"]) !!}
-
+    {!! Form::label("user_id", "Nombre", ["class"=>"label label-primary"]) !!}
+    {!! Form::select("user_id", $usuario,null, ["placeholder"=>"seleciona un cargo","class"=>"form-control"]) !!}
+    {!! Form::label("role_id", "Cargo", ["class"=>"label label-primary"]) !!}
+    {!! Form::select("role_id", $role,null, ["placeholder"=>"seleciona un cargo","class"=>"form-control"]) !!}
     {!! Form::submit("Registrar", ["class"=>"btn btn-primary"]) !!}
     {!! link_to("role", "Regresar", ["class"=>"btn btn-success"]) !!}
     {!! Form::close() !!}
