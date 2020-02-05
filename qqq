@@ -1,0 +1,11 @@
+  ManytoMany[m
+  OnetoMany[m
+  OnetoOne[m
+  develop[m
+  hasManyThrough[m
+  hasOneThrough[m
+  login[m
+  mail[m
+  master[m
+* [32mmorphMany[m
+  morphOne[m
