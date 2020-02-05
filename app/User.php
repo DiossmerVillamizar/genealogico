@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+    * Get the user's image.
+    */
+    public function image()
+    {
+        return $this->morphOne('App\Image', 'imageable');
+    }
 }
